@@ -1,5 +1,4 @@
-# zabbix-agent-msi-installer
-Zabbix Agent MSI Remote Install script
+# Zabbix Agent MSI Remote Install script
 ======================================
 28.12.2017 Roman Ermakov <r.ermakov@emg.fm>
 
