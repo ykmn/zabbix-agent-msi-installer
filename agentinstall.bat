@@ -10,7 +10,7 @@
 
 setlocal ENABLEEXTENSIONS
 
-set ZAGENT=zabbix_agent-3.4.3
+set ZAGENT=zabbix_agent-3.4.6
 set ZSERIP=172.16.100.100
 
 if %1.==. (echo Usage: agentinstall \\COMPUTERNAME && goto:eof)
@@ -19,7 +19,7 @@ if exist x:\ (net use x: /d)
 if not exist %ZAGENT%*.msi (echo Sorry, no Zabbix Agent MSI installer found. && echo Expecting %ZAGENT%_x64.msi and %ZAGENT%_x86.msi in current folder. && echo Download it from http://www.suiviperf.com/zabbix/ && goto:eof)
 
 
-set /P ADMIN=Enter remote PC adminisrtator username as DOMAIN\username or press Enter if it is you:
+set /P ADMIN=Enter remote PC adminisrtator username as DOMAIN\username or press Enter if you have admin rights:
 set COMPUTERNAME=%1
 
 :process
