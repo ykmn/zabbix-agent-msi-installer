@@ -1,5 +1,5 @@
 # Zabbix Agent MSI Remote Install script
-======================================
+
 BAT-script for easy Zabbix Agent MSI package installation/update on remote Windows host. You may use it if you can't use Group Policy deployment.
 
 1. Download latest Zabbix Agent MSI package: http://www.suiviperf.com/zabbix/ and put zabbix_agent-\*_x64.msi and zabbix_agent-\*_x86.msi to script folder.
