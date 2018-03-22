@@ -5,7 +5,7 @@ BAT-script for easy Zabbix Agent MSI package installation/update on remote Windo
 1. Download latest Zabbix Agent MSI package: http://www.suiviperf.com/zabbix/ and put zabbix_agent-\*_x64.msi and zabbix_agent-\*_x86.msi to script folder.
 2. Download latest Sysinternals PsExec: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec and put it to script folder.
 3. Set correct Agent version and Zabbix server IP editing following strings in script:
-`set ZAGENT=zabbix_agent-3.4.3
+`set ZAGENT=zabbix_agent-3.4.7
 set ZSERIP=172.16.100.100`
 4. Run script with remote computer name as parameter:
 `agentinstall \\COMPUTERNAME`
