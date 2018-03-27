@@ -3,6 +3,7 @@
 :: Have zabbix_agent-VER_ARCH.msi and psexec.exe in script folder.
 ::
 :: History:
+:: v1.3 2018-03-27 Auto-downloading .msi from http://www.suiviperf.com/zabbix - just set the version in %ZAGENT%
 :: v1.2 2017-12-28 Some code cleanup.
 :: v1.1 2017-03-15 Now asking for admin username; removed hardcoded drive letter for remote c$.
 :: v1.0 2013-04-08 Initial release.
@@ -10,14 +11,17 @@
 
 setlocal ENABLEEXTENSIONS
 
-set ZAGENT=zabbix_agent-3.4.6
+set ZAGENT=zabbix_agent-3.4.7
 set ZSERIP=172.16.100.100
 
 if %1.==. (echo Usage: agentinstall \\COMPUTERNAME && goto:eof)
-if not exist psexec.exe (echo Sorry, no psexec.exe found. && echo Download it from Microsoft: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec && goto:eof)
-if exist x:\ (net use x: /d)
-if not exist %ZAGENT%*.msi (echo Sorry, no Zabbix Agent MSI installer found. && echo Expecting %ZAGENT%_x64.msi and %ZAGENT%_x86.msi in current folder. && echo Download it from http://www.suiviperf.com/zabbix/ && goto:eof)
+if not exist psexec.exe (echo Sorry, no psexec.exe found. && echo Get it from Microsoft: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec && goto:eof)
+if not exist %ZAGENT%*.msi (
+echo No Zabbix Agent MSI installer found. Downloading from http://www.suiviperf.com/zabbix/ &&^
+powershell -NoProfile -ExecutionPolicy unrestricted -Command "Invoke-WebRequest http://www.suiviperf.com/zabbix/%ZAGENT%_x86.msi -OutFile %ZAGENT%_x86.msi" &&^
+powershell -NoProfile -ExecutionPolicy unrestricted -Command "Invoke-WebRequest http://www.suiviperf.com/zabbix/%ZAGENT%_x64.msi -OutFile %ZAGENT%_x64.msi" )
 
+if exist x:\ (net use x: /d)
 
 set /P ADMIN=Enter remote PC adminisrtator username as DOMAIN\username or press Enter if you have admin rights:
 set COMPUTERNAME=%1
