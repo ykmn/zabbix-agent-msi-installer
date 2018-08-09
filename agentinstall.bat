@@ -11,11 +11,12 @@
 
 setlocal ENABLEEXTENSIONS
 
-set ZAGENT=zabbix_agent-3.4.7
+set ZAGENT=zabbix_agent-3.4.10
 set ZSERIP=172.16.100.100
 
-if %1.==. (echo Usage: agentinstall \\COMPUTERNAME && goto:eof)
-if not exist psexec.exe (echo Sorry, no psexec.exe found. && echo Get it from Microsoft: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec && goto:eof)
+if %1.==. (echo Usage: agentinstall \\COMPUTERNAME && echo.  && goto:eof)
+if not exist psexec.exe (echo Sorry, no psexec.exe found. && echo Get it from Microsoft: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec  && echo. && goto:eof)
+
 if not exist %ZAGENT%*.msi (
 echo No Zabbix Agent MSI installer found. Downloading from http://www.suiviperf.com/zabbix/ &&^
 powershell -NoProfile -ExecutionPolicy unrestricted -Command "Invoke-WebRequest http://www.suiviperf.com/zabbix/%ZAGENT%_x86.msi -OutFile %ZAGENT%_x86.msi" &&^
