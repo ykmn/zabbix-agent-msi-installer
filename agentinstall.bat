@@ -11,7 +11,7 @@
 
 setlocal ENABLEEXTENSIONS
 
-set ZAGENT=zabbix_agent-4.0.1
+set ZAGENT=zabbix_agent-4.2.1
 set ZSERIP=172.16.100.100
 
 if %1.==. (echo Usage: agentinstall \\COMPUTERNAME && echo.  && goto:eof)
